@@ -19,7 +19,7 @@ namespace WinTail
             var consoleReaderActor = MyActorSystem.ActorOf(Props.Create(() =>
                 new ConsoleReaderActor(consoleWriterActor))); 
 
-            PrintInstructions();
+            // PrintInstructions();
 
             // time to make your first actors!
             //YOU NEED TO FILL IN HERE
@@ -29,7 +29,7 @@ namespace WinTail
 
             // tell console reader to begin
             //YOU NEED TO FILL IN HERE
-            consoleReaderActor.Tell("start");
+            consoleReaderActor.Tell(ConsoleReaderActor.StartCommand);
 
             // blocks the main thread from exiting until the actor system is shut down
             MyActorSystem.WhenTerminated.Wait();
