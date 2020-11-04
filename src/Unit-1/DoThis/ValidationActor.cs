@@ -1,3 +1,4 @@
+using System;
 using Akka.Actor;
 
 namespace WinTail
@@ -13,6 +14,7 @@ namespace WinTail
 
         protected override void OnReceive(object message)
         {
+            Console.WriteLine("validation actor recieved.");
             var msg = message as string;
             if (string.IsNullOrEmpty(msg))
             {
@@ -33,7 +35,8 @@ namespace WinTail
             }
             // tell sender to continue doing its thing
             // (whatever that may be, this actor doesn't care)
-           Sender.Tell(new Messages.ContinueProcessing());
+           // Sender.Tell(new Messages.ContinueProcessing());
+           Sender.Tell("no");
         }
         /// <summary>
         /// Validates <see cref="message"/>.
