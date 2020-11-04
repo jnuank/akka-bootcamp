@@ -25,9 +25,8 @@ namespace WinTail
             
             // tell console reader to begin
             //YOU NEED TO FILL IN HERE
-            // consoleReaderActor.Tell(ConsoleReaderActor.StartCommand);
-            validationActor.Tell("start");
-            
+            consoleReaderActor.Tell(ConsoleReaderActor.StartCommand);
+
             // blocks the main thread from exiting until the actor system is shut down
             // ブロックされるまで、consoleReaderActorをTellし続ける…？
             MyActorSystem.WhenTerminated.Wait();

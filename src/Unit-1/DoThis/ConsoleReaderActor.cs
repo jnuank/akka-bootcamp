@@ -42,7 +42,6 @@ namespace WinTail
         /// </summary>
         private void GetAndValidateInput()
         {
-            Console.WriteLine("reader actor received.");
             var message = Console.ReadLine();
             if (!string.IsNullOrEmpty(message) &&
                 String.Equals(message, ExitCommand, StringComparison.OrdinalIgnoreCase))
