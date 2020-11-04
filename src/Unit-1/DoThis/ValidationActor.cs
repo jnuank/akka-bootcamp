@@ -25,14 +25,15 @@ namespace WinTail
                 {
                     _consoleWriterActor.Tell(new Messages.InputSuccess("Thank you! Message was valid."));
 
-                    // continue reading messages from console
-                    Self.Tell(new Messages.ContinueProcessing());
                 }
                 else
                 {
-                    Self.Tell(new Messages.ValidationError("Invalid: input had odd number of characters."));
+                    _consoleWriterActor.Tell(new Messages.ValidationError("Invalid: input had odd number of characters."));
                 }
             }
+            // tell sender to continue doing its thing
+            // (whatever that may be, this actor doesn't care)
+           Sender.Tell(new Messages.ContinueProcessing());
         }
         /// <summary>
         /// Validates <see cref="message"/>.
